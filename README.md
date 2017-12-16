@@ -67,7 +67,7 @@ gulp.task('concatScripts', () =>
   'js/secondJS.js',
   'js/thirdJS.js'])
   .pipe(concat('app.js'))
-  //takes str that will create name 4 concatted file
+  //takes str that will create name for newly concatted file
   .pipe(gulp.dest('./build'))
 );
 ```

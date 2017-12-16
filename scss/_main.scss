@@ -1,0 +1,11 @@
+body {
+   color: map-get($colors, dkorange);
+   font-family: map-get($fonts, primary-font);
+   background-color: map-get($colors, softred);
+}
+
+.title{
+  &-lg {
+    color: map-get($colors, ivory);
+  }
+}
