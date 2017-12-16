@@ -1,0 +1,16 @@
+.container-grid {
+  display: grid;
+  grid-template-columns: 1fr 50vw 1fr;
+  grid-template-rows: 10vh repeat(4, 20vh) 10vh;
+}
+
+.col-ctr {
+  grid-column: 2/3;
+  border: 1px solid fuchsia;
+}
+
+.row-2 {
+  grid-row: 2;
+  background-color: navy;
+  color: map-get($colors, myIvory);
+}

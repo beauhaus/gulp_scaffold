@@ -8,15 +8,7 @@ body {
    background-color: map-get($colors, softred);
 }
 
-h1.title {
-    &-lg {
-      color: map-get($colors, myIvory) !important;
-}
-}
-
 div {
-  border: 2px solid yellow;
-  width: 40vw;
-  height: 30vh;
+  border: 1px solid yellow;
   background: grey;
 }

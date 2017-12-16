@@ -2,12 +2,17 @@
 
 // sass --watch scss/master.scss:css/styles.css
 
-@import '_colors';
-@import '_fonts';
+@import 'base/_colors';
+@import 'base/_fonts';
+
+/* general styles *******/
+@import 'main/_main';
 
 
-/* general ******************/
-@import '_main';
+@import 'components/_buttons';
+@import 'layout/_layout';
+
+
 
 
 // .title{

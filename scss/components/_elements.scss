@@ -1,0 +1,5 @@
+h1.title {
+  &-lg {
+    color: map-get($colors, myIvory) !important;
+  }
+}
