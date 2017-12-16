@@ -2,9 +2,20 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Roboto:100");
 /* general ******************/
+* {
+  box-sizing: border-box; }
+
 body {
-  color: #945706;
   font-family: "Roboto", Sans-Serif;
   background-color: #b0493a; }
+
+h1.title-lg {
+  color: #e6d8cc !important; }
+
+div {
+  border: 2px solid yellow;
+  width: 40vw;
+  height: 30vh;
+  background: grey; }
 
 /*# sourceMappingURL=styles.css.map */
