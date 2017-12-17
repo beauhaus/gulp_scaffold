@@ -21,6 +21,15 @@ gulp.task('minifyScripts', () =>
     )
   )
 
+gulp.task('compileSass', () =>
+  gulp.src('scss/master.scss')
+      .pipe(uglify())
+      .pipe(rename('app.min.js'))
+      .pipe(gulp.dest('./build')
+    )
+  )
+
+
 gulp.task("default",["faces"], () =>
   console.log("Ran 'FACES' having fired default")
 );

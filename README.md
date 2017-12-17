@@ -1,12 +1,17 @@
-# Gulp full-basic install
+# Gulp Basic full install featuring
 
-## cli commands
+* js-concat
+* js-uglification
+* sass-scaffold
+
+## CLI commands
 
 + npm init
 + npm i gulp --save-dev
 + npm i gulp-concat --save-dev
 + npm i gulp-uglify --save-dev
 + npm i gulp-rename --save-dev
++ npm i gulp-sourcemaps --save-dev
 
 ## additions
 
@@ -85,3 +90,7 @@ gulp.task('minifyScripts', () =>
     )
   )
 ```
+
+---
+
+## enter SASS
