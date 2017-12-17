@@ -12,6 +12,7 @@
 + npm i gulp-uglify --save-dev
 + npm i gulp-rename --save-dev
 + npm i gulp-sourcemaps --save-dev
++ npm i gulp-sass --save-dev
 
 ## additions
 
@@ -94,3 +95,56 @@ gulp.task('minifyScripts', () =>
 ---
 
 ## enter SASS
+
+** (using sass and sourcemaps) **
+
+gulpfile.js
+```js
+gulp.task('compileSass', () =>
+  gulp.src('scss/master.scss')
+      .pipe(maps.init())
+      .pipe(sass())
+      .pipe(rename('styles.css'))
+      .pipe(maps.write('./'))
+      .pipe(gulp.dest('./build/css')
+    )
+  )
+```
+
+---
+## build task
+
+One big problem with this:
+
+*gulp.task("build", ["concatScripts",'minifyScripts','compileSass']);*
+
+gulp runs them concurrently...
+
+We must, therefore, run them serially.
++ add concatScripts as a dependency of minifyScripts
+```diff
+- gulp.task('minifyScripts', () =>
++ gulp.task('minifyScripts', ["concatScripts"], () =>
+
+```
++ we are certain in our arrow functions that concatScripts explicitly returns what it's creating
+
++ with concat as a dependency of minify, we can remove concat from the buildtask
+```diff
+- gulp.task("build", ['concatScripts', 'minifyScripts','compileSass']);
++ gulp.task("build", ['minifyScripts','compileSass']);
+```
+
+## Implementing *Watch* & *globbing* 
+
+Simply add a new task & call it watch
+```js
+gulp.task('watchSass', () =>
+  gulp.watch(["scss/**/*.scss"], ["compileSass"])
+)
+```
+
+
+|First Argument|Second Argument|
+|:-----------|:-------|
+|"**" -- look for any folder|task to run when change detected|
