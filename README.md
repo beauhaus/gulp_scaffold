@@ -13,6 +13,7 @@
 + npm i gulp-rename --save-dev
 + npm i gulp-sourcemaps --save-dev
 + npm i gulp-sass --save-dev
++ npm i del --save-dev
 
 ## additions
 
@@ -61,10 +62,10 @@ gulp.task("default",["faces"], () =>
   console.log("Ran 'FACES' having fired default")
 );
 ```
-
+---
 ### gulp-concat tasks
 
-Note: Gulp is smart enough *NOT* to concat js that has errors.
+Note: Gulp is smart enough *NOT* to concat javascript that won't run as a single file. Syntax error-ridden js will not compile.
 
 ```js
 gulp.task('concatScripts', () =>
@@ -127,9 +128,9 @@ We must, therefore, run them serially.
 + gulp.task('minifyScripts', ["concatScripts"], () =>
 
 ```
-+ we are certain in our arrow functions that concatScripts explicitly returns what it's creating
++ we are certain, in our arrow, functions that concatScripts explicitly returns what it's creating
 
-+ with concat as a dependency of minify, we can remove concat from the buildtask
++ with concat as a dependency of minify, we can remove concat from the build task
 ```diff
 - gulp.task("build", ['concatScripts', 'minifyScripts','compileSass']);
 + gulp.task("build", ['minifyScripts','compileSass']);
@@ -148,3 +149,39 @@ gulp.task('watchSass', () =>
 |First Argument|Second Argument|
 |:-----------|:-------|
 |"**" -- look for any folder|task to run when change detected|
+
+
+## Production-ready files piped to 'dist' folder
+```js
+gulp.task("build", ['minifyScripts', 'compileSass'], () =>
+  gulp.src(
+    [
+      'build/css/styles.css',
+      'build/js/app.min.js',
+      'index.html',
+      'img/**'
+    ],
+    { base: './' } // this creates directory structure within 'dist' folder
+  )
+    .pipe(gulp.dest('dist'))
+);
+```
+
+
+## Cleaning your folders/files when rebuilding
+Both folders contain "gulped" files & are deleted.
+This is to be put in the default task to be performed upon each default "gulp" call.
+```js
+gulp.task('clean', () =>
+  del(['dist', 'build']),
+  console.log("Deleting 'dest' and 'dist' folders")
+)
+```
+
+### The default gulp task
+```js
+gulp.task("default", ["clean"], () =>
+  gulp.start("build")
+);
+```
+
