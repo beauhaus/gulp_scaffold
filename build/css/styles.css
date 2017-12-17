@@ -19,6 +19,12 @@ button {
   width: 8vw;
   height: 4vh; }
 
+h1.title-lg {
+  color: #e6d8cc !important; }
+
+img {
+  width: 10vw; }
+
 .container-grid {
   display: grid;
   grid-template-columns: 1fr 50vw 1fr;
