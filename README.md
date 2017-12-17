@@ -1,8 +1,11 @@
 # Gulp Basic full install featuring
 
-* js-concat
-* js-uglification
-* sass-scaffold
+* concat
+* minification
+* sass implementation
+* sourcemaps
+* watch
+* dev & production
 
 ## CLI commands
 
