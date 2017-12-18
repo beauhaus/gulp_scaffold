@@ -17,7 +17,7 @@ gulp.task('concatScripts', () =>
 );
 
 gulp.task('minifyScripts', ["concatScripts"], () =>
-  gulp.src('build/app.js')
+  gulp.src('build/js/app.js') // FIXME: this is failing
     .pipe(uglify())
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('./build/js')
