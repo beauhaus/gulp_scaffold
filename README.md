@@ -51,7 +51,7 @@ gulp.task("default",["Hello"], function() {
 })
 ```
 
---run "gulp" *this will fire the default*
+--run "gulp" *this will fire the *default**
 
 ---
 ### Of course, these can be es6-ified:
@@ -254,3 +254,21 @@ gulp.task("default", ["clean"], () =>
   gulp.start("build")
 );
 ```
+## We are now armed with the following commands:
+|Terminal Command|Use|
+|:-----------|:-------|
+|**gulp concatScripts**|js concatenation|
+|**gulp minifyScripts**|js minification|
+|**gulp compileSass**|sass built into css|
+|**gulp watchSass**|compiles upon any sass <br>modification into css|
+|**gulp clean**|removes both "build" and "dist" folders|
+|**gulp build**|minifies js, compiles sass, creates production version inside 'dist' folder|
+|**gulp**|First, runs "clean" command, then creates & fills "build" & "dist" folders|
+
+<div style="background: slategrey; border: 2px solid coral"><h3 style="color: wheat">Nota Bene:</h3>
+<p style="color: white">take note of file directory in the dist folder's refs to css & js</p>
+```html
+<link rel="stylesheet" href="./build/css/styles.css">
+<script src="./build/js/app.min.js"></script>
+```
+</div>

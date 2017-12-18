@@ -17,7 +17,7 @@ gulp.task('concatScripts', () =>
 );
 
 gulp.task('minifyScripts', ["concatScripts"], () =>
-  gulp.src('build/js/app.js') // FIXME: this is failing
+  gulp.src('build/js/app.js')
     .pipe(uglify())
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('./build/js')
@@ -29,7 +29,7 @@ gulp.task('compileSass', () =>
     .pipe(maps.init())
     .pipe(sass())
     .pipe(rename('styles.css'))
-    .pipe(maps.write('./'))
+    .pipe(maps.write('./')) 
     .pipe(gulp.dest('./build/css')
     )
 )
@@ -53,7 +53,7 @@ gulp.task("build", ['minifyScripts', 'compileSass'], () =>
       'index.html',
       'img/**'
     ],
-    { base: './' } // this creates directory structure within 'dist' folder
+    { base: './' } // maintains directory tree integrity and passes into dist folder
   )
     .pipe(gulp.dest('dist'))
 );
