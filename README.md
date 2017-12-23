@@ -17,6 +17,7 @@
 + npm i gulp-sourcemaps --save-dev
 + npm i gulp-sass --save-dev
 + npm i del --save-dev
++ npm i gulp-util --save-dev
 
 ## additions
 
@@ -139,7 +140,7 @@ We must, therefore, run them serially.
 + gulp.task("build", ['minifyScripts','compileSass']);
 ```
 
-## Implementing *Watch* & *globbing* 
+## Implementing *Watch* & *globbing*
 
 Simply add a new task & call it watch
 ```js

@@ -5,7 +5,8 @@ var gulp = require('gulp'),
   rename = require("gulp-rename"),
   sass = require('gulp-sass'),
   maps = require('gulp-sourcemaps'),
-  del = require('del');
+  del = require('del'),
+  gutil = require('gulp-util');
 
 gulp.task('concatScripts', () =>
   gulp.src(['js/jquery-3.2.1.min.js',
@@ -18,7 +19,7 @@ gulp.task('concatScripts', () =>
 
 gulp.task('minifyScripts', ["concatScripts"], () =>
   gulp.src('build/js/app.js')
-    .pipe(uglify())
+    .pipe(uglify().on('error', gutil.log)) //this logs errors)
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('./build/js')
     )
@@ -29,7 +30,7 @@ gulp.task('compileSass', () =>
     .pipe(maps.init())
     .pipe(sass())
     .pipe(rename('styles.css'))
-    .pipe(maps.write('./')) 
+    .pipe(maps.write('./'))
     .pipe(gulp.dest('./build/css')
     )
 )
